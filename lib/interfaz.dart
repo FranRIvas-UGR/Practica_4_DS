@@ -18,13 +18,42 @@ class PizzaBuilderScreen extends StatefulWidget {
   _PizzaBuilderScreenState createState() => _PizzaBuilderScreenState();
 }
 
+
+
 class _PizzaBuilderScreenState extends State<PizzaBuilderScreen> {
   late PizzaFacade pizzaFacade;
+  late String current_user;
 
   @override
   void initState() {
     super.initState();
+    current_user = "Francisco";
     pizzaFacade = PizzaFacade();
+  }
+
+  void _cargarPizzasIniciales(){
+    switch(current_user){
+      case "Francisco":
+        pizzaFacade.addPizza(MargheritaPizzaBuilder());
+        pizzaFacade.addPizza(PepperoniPizzaBuilder());
+        break;
+      case "Helena":
+        pizzaFacade.addPizza(VeggiePizzaBuilder());
+        pizzaFacade.addPizza(PepperoniPizzaBuilder());
+        break;
+      case "Jorge":
+        pizzaFacade.addPizza(MargheritaPizzaBuilder());
+        pizzaFacade.addPizza(VeggiePizzaBuilder());
+        break;
+      case "Benigno":
+        pizzaFacade.addPizza(MargheritaPizzaBuilder());
+        pizzaFacade.addPizza(PepperoniPizzaBuilder());
+        pizzaFacade.addPizza(VeggiePizzaBuilder());
+        break;
+      case "Alejandra":
+        pizzaFacade.addPizza(MargheritaPizzaBuilder());
+        break;
+    }
   }
 
   @override
@@ -126,55 +155,75 @@ class _PizzaBuilderScreenState extends State<PizzaBuilderScreen> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            DrawerHeader(
-              child: Text('Usuarios'),
+            const DrawerHeader(
               decoration: BoxDecoration(
                 color: Colors.blue,
               ),
+              child: Text('Usuarios'),
             ),
             ListTile(
-              title: Text('Francisco'),
+              title: const Text('Francisco'),
               onTap: () {
-                setState(() {
-                  pizzaFacade = PizzaFacade();
-                });
-                Navigator.pop(context);
+                if (current_user != "Francisco") {
+                  setState(() {
+                    _cargarPizzasIniciales();
+                    current_user = "Francisco";
+                    print(current_user);
+                    Navigator.pop(context);
+                  });
+                }
               },
             ),
             ListTile(
               title: Text('Helena'),
               onTap: () {
-                setState(() {
-                  pizzaFacade = PizzaFacade();
-                });
-                Navigator.pop(context);
+                if (current_user != "Helena") {
+                  setState(() {
+                    _cargarPizzasIniciales();
+                    current_user = "Helena";
+                    print(current_user);
+                    Navigator.pop(context);
+                  });
+                }
               },
             ),
             ListTile(
               title: Text('Jorge'),
               onTap: () {
-                setState(() {
-                  pizzaFacade = PizzaFacade();
-                });
-                Navigator.pop(context);
+                if (current_user != "Jorge") {
+                  setState(() {
+                    _cargarPizzasIniciales();
+                    current_user = "Jorge";
+                    print(current_user);
+                    Navigator.pop(context);
+                  });
+                }
               },
             ),
             ListTile(
               title: Text('Benigno'),
               onTap: () {
-                setState(() {
-                  pizzaFacade = PizzaFacade();
-                });
-                Navigator.pop(context);
+                if (current_user != "Benigno") {
+                  setState(() {
+                    _cargarPizzasIniciales();
+                    current_user = "Benigno";
+                    print(current_user);
+                    Navigator.pop(context);
+                  });
+                }
               },
             ),
             ListTile(
               title: Text('Alejandra'),
               onTap: () {
-                setState(() {
-                  pizzaFacade = PizzaFacade();
-                });
-                Navigator.pop(context);
+                if (current_user != "Alejandra") {
+                  setState(() {
+                    _cargarPizzasIniciales();
+                    current_user = "Alejandra";
+                    print(current_user);
+                    Navigator.pop(context);
+                  });
+                }
               },
             ),
           ],
