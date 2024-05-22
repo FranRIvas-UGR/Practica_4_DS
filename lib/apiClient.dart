@@ -12,7 +12,18 @@ class ApiClient {
 
     if (response.statusCode == 200) {
       List pizzasJson = jsonDecode(response.body);
-      return pizzasJson.map((pizza) => PizzaBuilder.fromJson(pizza)).toList();
+      return pizzasJson.map((pizza) {
+        switch (pizza['name']) {
+          case 'Pizza margarita':
+            return MargheritaPizzaBuilder().fromJson(pizza);
+          case 'Pizza pepperoni':
+            return PepperoniPizzaBuilder().fromJson(pizza);
+          case 'Pizza veggie':
+            return VeggiePizzaBuilder().fromJson(pizza);
+          default:
+            throw Exception('Unknown pizza type');
+        }
+      }).toList();
     } else {
       throw Exception('Failed to load pizzas');
     }

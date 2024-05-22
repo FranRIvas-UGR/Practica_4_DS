@@ -120,6 +120,65 @@ class _PizzaBuilderScreenState extends State<PizzaBuilderScreen> {
               ),
           ],
         ),
+        // Hacemos un desplegable para cambiar de usuario
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text('Usuarios'),
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+            ),
+            ListTile(
+              title: Text('Francisco'),
+              onTap: () {
+                setState(() {
+                  pizzaFacade = PizzaFacade();
+                });
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('Helena'),
+              onTap: () {
+                setState(() {
+                  pizzaFacade = PizzaFacade();
+                });
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('Jorge'),
+              onTap: () {
+                setState(() {
+                  pizzaFacade = PizzaFacade();
+                });
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('Benigno'),
+              onTap: () {
+                setState(() {
+                  pizzaFacade = PizzaFacade();
+                });
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('Alejandra'),
+              onTap: () {
+                setState(() {
+                  pizzaFacade = PizzaFacade();
+                });
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
